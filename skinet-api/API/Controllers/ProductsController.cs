@@ -1,21 +1,23 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Application.Features.Products.Queries.RequestModels;
+using Domain;
+using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("api/{controller}")]
-    public class ProductsController : ControllerBase
+    public class ProductsController : BaseController
     {
         [HttpGet]
-        public string GetProducts()
+        public async Task<ActionResult<List<Product>>> GetProducts()
         {
-            return "all products";
+            return await Mediator.Send(new GetProductsQuery());
         }
 
         [HttpGet("{id}")]
-        public string GetProduct(int id)
+        public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            return "Product";
+            return await Mediator.Send(new GetProductByIdQuery{Id = id});
         }
     }
 }
