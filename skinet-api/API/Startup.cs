@@ -4,6 +4,8 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Application.Features.Products.Queries.RequestModels;
+using Application.Interfaces;
+using Infrastracture.Data;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,15 +33,11 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
-            
+            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddControllers();
-            
             services.AddMediatR(typeof(GetProductsQuery).Assembly);
-            
             services.AddDbContext<DataContext>(x => 
                 x.UseSqlite(_configuration.GetConnectionString("DefaultConnection")));
-            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
