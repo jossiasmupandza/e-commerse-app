@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using Application.Features.Products.Queries.RequestModels;
+using Application.Interfaces;
 using Domain;
 using MediatR;
 using Persistence;
@@ -9,16 +10,16 @@ namespace Application.Features.Products.Queries.Handlers
 {
     public class GetProductByIdHandler : IRequestHandler<GetProductByIdQuery, Product>
     {
-        private readonly DataContext _context;
+        private readonly IProductRepository _productRepository;
 
-        public GetProductByIdHandler(DataContext context)
+        public GetProductByIdHandler(IProductRepository productRepository)
         {
-            _context = context;
+            _productRepository = productRepository;
         }
 
         public async Task<Product> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
         {
-            return await _context.Products.FindAsync(request.Id);
+            return await _productRepository.GetProductByIdAsync(request.Id);
         }
     }
 }

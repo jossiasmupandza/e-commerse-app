@@ -9,7 +9,7 @@ namespace API.Controllers
     public class ProductsController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> GetProducts()
+        public async Task<IReadOnlyList<Product>> GetProducts()
         {
             return await Mediator.Send(new GetProductsQuery());
         }
@@ -18,6 +18,6 @@ namespace API.Controllers
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
             return await Mediator.Send(new GetProductByIdQuery{Id = id});
-        }
+        } 
     }
 }

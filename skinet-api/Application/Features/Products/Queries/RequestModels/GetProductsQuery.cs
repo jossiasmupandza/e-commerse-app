@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.Features.Products.Queries.RequestModels
 {
-    public class GetProductsQuery : IRequest<List<Product>>
+    public class GetProductsQuery : IRequest<IReadOnlyList<Product>>
     {
         
     }
