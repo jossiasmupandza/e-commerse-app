@@ -16,7 +16,6 @@
           <e p="ProductsController.cs" t="Include" />
           <e p="WeatherForecastController.cs" t="Include" />
         </e>
-        <e p="db.sql" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="net5.0" t="Include">
@@ -94,10 +93,13 @@
       <e p="packages" t="ExcludeRecursive" />
       <e p="Persistence" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Config" t="Include">
+          <e p="ProductConfiguration.cs" t="Include" />
+        </e>
         <e p="DataContext.cs" t="Include" />
         <e p="Migrations" t="Include">
-          <e p="20210917144257_InitialCreate.cs" t="Include" />
-          <e p="20210917144257_InitialCreate.Designer.cs" t="Include" />
+          <e p="20210922135349_InitialCreate.cs" t="Include" />
+          <e p="20210922135349_InitialCreate.Designer.cs" t="Include" />
           <e p="DataContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
