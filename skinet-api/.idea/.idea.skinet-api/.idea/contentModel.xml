@@ -100,6 +100,7 @@
           <e p="ProductConfiguration.cs" t="Include" />
         </e>
         <e p="DataContext.cs" t="Include" />
+        <e p="DataContextSeed.cs" t="Include" />
         <e p="Migrations" t="Include">
           <e p="20210922135349_InitialCreate.cs" t="Include" />
           <e p="20210922135349_InitialCreate.Designer.cs" t="Include" />
@@ -113,6 +114,12 @@
           </e>
         </e>
         <e p="Persistence.csproj" t="IncludeRecursive" />
+        <e p="SeedData" t="Include">
+          <e p="brands.json" t="Include" />
+          <e p="delivery.json" t="Include" />
+          <e p="products.json" t="Include" />
+          <e p="types.json" t="Include" />
+        </e>
       </e>
       <e p="skinet-api.sln" t="IncludeFlat" />
     </e>
