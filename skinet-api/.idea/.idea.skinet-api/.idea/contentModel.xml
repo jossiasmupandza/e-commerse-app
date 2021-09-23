@@ -17,8 +17,6 @@
           <e p="WeatherForecastController.cs" t="Include" />
         </e>
         <e p="db.sql" t="Include" />
-        <e p="db.sql-shm" t="Include" />
-        <e p="db.sql-wal" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="net5.0" t="Include">
@@ -37,6 +35,18 @@
         <e p="Application.csproj" t="IncludeRecursive" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Features" t="Include">
+          <e p="ProductBrands" t="Include">
+            <e p="Queries" t="Include">
+              <e p="Handlers" t="Include">
+                <e p="GetProductBrandHandler.cs" t="Include" />
+                <e p="GetProductBrandsHandler.cs" t="Include" />
+              </e>
+              <e p="RequestModal" t="Include">
+                <e p="GetProductBrandByIdQuery.cs" t="Include" />
+                <e p="GetProductBrandsQuery.cs" t="Include" />
+              </e>
+            </e>
+          </e>
           <e p="Products" t="Include">
             <e p="Commands" t="Include" />
             <e p="Queries" t="Include">
@@ -47,6 +57,18 @@
               <e p="RequestModels" t="Include">
                 <e p="GetProductByIdQuery.cs" t="Include" />
                 <e p="GetProductsQuery.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="ProductTypes" t="Include">
+            <e p="Queries" t="Include">
+              <e p="Handlers" t="Include">
+                <e p="GetProductTypeByIdHandler.cs" t="Include" />
+                <e p="GetProductTypesHandler.cs" t="Include" />
+              </e>
+              <e p="RequestModals" t="Include">
+                <e p="GetProductTypeByIdQuery.cs" t="Include" />
+                <e p="GetProductTypesQuery.cs" t="Include" />
               </e>
             </e>
           </e>
