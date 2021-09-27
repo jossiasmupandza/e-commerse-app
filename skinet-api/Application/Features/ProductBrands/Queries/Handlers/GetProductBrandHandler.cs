@@ -9,11 +9,16 @@ namespace Application.Features.ProductBrands.Queries.Handlers
 {
     public class GetProductBrandHandler : IRequestHandler<GetProductBrandByIdQuery, ProductBrand>
     {
-        private readonly IProductRepository _repository;
-        
+        private readonly IGenericRepository<ProductBrand> _genericRepository;
+
+        public GetProductBrandHandler(IGenericRepository<ProductBrand> genericRepository)
+        {
+            _genericRepository = genericRepository;
+        }
+
         public async Task<ProductBrand> Handle(GetProductBrandByIdQuery request, CancellationToken cancellationToken)
         {
-            return await _repository.GetProductBrandByIdAsync(request.Id);
+            return await _genericRepository.GetByIdAsync(request.Id);
         }
     }
 }

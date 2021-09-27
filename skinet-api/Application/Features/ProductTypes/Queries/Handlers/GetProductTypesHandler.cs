@@ -10,16 +10,16 @@ namespace Application.Features.ProductTypes.Queries.Handlers
 {
     public class GetProductTypesHandler : IRequestHandler<GetProductTypesQuery, IReadOnlyList<ProductType>>
     {
-        private readonly IProductRepository _repository;
+        private readonly IGenericRepository<ProductType> _genericRepository;
 
-        public GetProductTypesHandler(IProductRepository repository)
+        public GetProductTypesHandler(IGenericRepository<ProductType> genericRepository)
         {
-            _repository = repository;
+            _genericRepository = genericRepository;
         }
 
         public async Task<IReadOnlyList<ProductType>> Handle(GetProductTypesQuery request, CancellationToken cancellationToken)
         {
-            return await _repository.GetProductTypesAsync();
+            return await _genericRepository.ListAllAsync();
         }
     }
 }

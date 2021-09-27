@@ -2,19 +2,28 @@
 using System.Threading.Tasks;
 using Application.Interfaces;
 using Domain;
+using Microsoft.EntityFrameworkCore;
+using Persistence;
 
 namespace Infrastracture.Data
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
-        public Task<T> GetByIdAsync(int id)
+        private readonly DataContext _context;
+
+        public GenericRepository(DataContext context)
         {
-            throw new System.NotImplementedException();
+            _context = context;
+        }
+        
+        public async Task<T> GetByIdAsync(int id)
+        {
+            return await _context.Set<T>().FindAsync(id);
         }
 
-        public Task<IReadOnlyList<T>> ListAllAsync()
+        public async Task<IReadOnlyList<T>> ListAllAsync()
         {
-            throw new System.NotImplementedException();
+            return await _context.Set<T>().ToListAsync();
         }
     }
 }

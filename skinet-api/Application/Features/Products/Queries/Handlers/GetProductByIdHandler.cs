@@ -10,16 +10,16 @@ namespace Application.Features.Products.Queries.Handlers
 {
     public class GetProductByIdHandler : IRequestHandler<GetProductByIdQuery, Product>
     {
-        private readonly IProductRepository _productRepository;
+        private readonly IGenericRepository<Product> _genericRepository;
 
-        public GetProductByIdHandler(IProductRepository productRepository)
+        public GetProductByIdHandler(IGenericRepository<Product> genericRepository)
         {
-            _productRepository = productRepository;
+            _genericRepository = genericRepository;
         }
 
         public async Task<Product> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
         {
-            return await _productRepository.GetProductByIdAsync(request.Id);
+            return await _genericRepository.GetByIdAsync(request.Id);
         }
     }
 }
