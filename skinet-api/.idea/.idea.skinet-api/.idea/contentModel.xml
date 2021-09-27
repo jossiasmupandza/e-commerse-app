@@ -75,6 +75,7 @@
         </e>
         <e p="Helpers" t="Include" />
         <e p="Interfaces" t="Include">
+          <e p="IGenericRepository.cs" t="Include" />
           <e p="IProductRepository.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
@@ -106,6 +107,9 @@
       <e p="Infrastracture" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Class1.cs" t="Include" />
+        <e p="Data" t="Include">
+          <e p="GenericRepository.cs" t="Include" />
+        </e>
         <e p="Infrastracture.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">

@@ -34,6 +34,8 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            
             services.AddControllers();
             services.AddMediatR(typeof(GetProductsQuery).Assembly);
             services.AddDbContext<DataContext>(x => 
