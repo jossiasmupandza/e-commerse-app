@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.Features.Products.Queries.RequestModels;
 using Application.Interfaces;
+using Application.Specifications;
 using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +22,9 @@ namespace Application.Features.Products.Queries.Handlers
 
         public async Task<IReadOnlyList<Product>> Handle(GetProductsQuery request, CancellationToken cancellationToken)
         {
-            return await _genericRepository.ListAllAsync();
+            var spec = new ProductWithTypesAndBrandsSpecification();
+            
+            return await _genericRepository.ListAsync(spec);
         }
     }
 }

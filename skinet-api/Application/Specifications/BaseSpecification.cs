@@ -12,6 +12,10 @@ namespace Application.Specifications
             Criteria = criteria;
         }
 
+        public BaseSpecification()
+        {
+        }
+
         public Expression<Func<T, bool>> Criteria { get; }
         public List<Expression<Func<T, object>>> Includes { get; } = 
             new List<Expression<Func<T, object>>>();
