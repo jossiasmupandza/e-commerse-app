@@ -30,6 +30,30 @@
         </e>
         <e p="Startup.cs" t="Include" />
         <e p="WeatherForecast.cs" t="Include" />
+        <e p="wwwroot" t="Include">
+          <e p="images" t="Include">
+            <e p="Products" t="Include">
+              <e p="boot-ang1.png" t="Include" />
+              <e p="boot-ang2.png" t="Include" />
+              <e p="boot-core1.png" t="Include" />
+              <e p="boot-core2.png" t="Include" />
+              <e p="boot-redis1.png" t="Include" />
+              <e p="glove-code1.png" t="Include" />
+              <e p="glove-code2.png" t="Include" />
+              <e p="glove-react1.png" t="Include" />
+              <e p="glove-react2.png" t="Include" />
+              <e p="hat-core1.png" t="Include" />
+              <e p="hat-react1.png" t="Include" />
+              <e p="hat-react2.png" t="Include" />
+              <e p="sb-ang1.png" t="Include" />
+              <e p="sb-ang2.png" t="Include" />
+              <e p="sb-core1.png" t="Include" />
+              <e p="sb-core2.png" t="Include" />
+              <e p="sb-react1.png" t="Include" />
+              <e p="sb-ts1.png" t="Include" />
+            </e>
+          </e>
+        </e>
       </e>
       <e p="Application" t="IncludeRecursive">
         <e p="Application.csproj" t="IncludeRecursive" />
