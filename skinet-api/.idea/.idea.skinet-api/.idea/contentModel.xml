@@ -113,6 +113,7 @@
         <e p="Class1.cs" t="Include" />
         <e p="Data" t="Include">
           <e p="GenericRepository.cs" t="Include" />
+          <e p="SpecificationEvaluator.cs" t="Include" />
         </e>
         <e p="Infrastracture.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
