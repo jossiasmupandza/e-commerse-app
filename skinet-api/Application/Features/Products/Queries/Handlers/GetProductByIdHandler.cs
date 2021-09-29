@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Application.Features.Products.Queries.RequestModels;
 using Application.Interfaces;
+using Application.Specifications;
 using Domain;
 using MediatR;
 using Persistence;
@@ -19,7 +20,9 @@ namespace Application.Features.Products.Queries.Handlers
 
         public async Task<Product> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
         {
-            return await _genericRepository.GetByIdAsync(request.Id);
+            var spec = new ProductWithTypesAndBrandsSpecification(request.Id);
+            
+            return await _genericRepository.GetEntityWithSpecification(spec);
         }
     }
 }
