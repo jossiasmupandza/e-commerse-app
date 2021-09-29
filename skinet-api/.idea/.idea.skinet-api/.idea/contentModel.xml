@@ -77,6 +77,7 @@
         <e p="Interfaces" t="Include">
           <e p="IGenericRepository.cs" t="Include" />
           <e p="IProductRepository.cs" t="Include" />
+          <e p="ISpecification.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -87,6 +88,9 @@
         </e>
         <e p="Repositories" t="Include">
           <e p="ProductRepository.cs" t="Include" />
+        </e>
+        <e p="Specifications" t="Include">
+          <e p="BaseSpecification.cs" t="Include" />
         </e>
       </e>
       <e p="Domain" t="IncludeRecursive">
