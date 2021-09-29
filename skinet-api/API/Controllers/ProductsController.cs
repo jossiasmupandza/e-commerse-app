@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Application.Dtos;
 using Application.Features.ProductBrands.Queries.RequestModal;
 using Application.Features.Products.Queries.RequestModels;
 using Application.Features.ProductTypes.Queries.RequestModals;
@@ -11,13 +12,13 @@ namespace API.Controllers
     public class ProductsController : BaseController
     {
         [HttpGet]
-        public async Task<IReadOnlyList<Product>> GetProducts()
+        public async Task<IReadOnlyList<ProductDto>> GetProducts()
         {
             return await Mediator.Send(new GetProductsQuery());
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        public async Task<ActionResult<ProductDto>> GetProduct(int id)
         {
             return await Mediator.Send(new GetProductByIdQuery{Id = id});
         }
