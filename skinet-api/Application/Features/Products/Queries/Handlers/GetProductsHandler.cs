@@ -6,6 +6,7 @@ using Application.Dtos;
 using Application.Features.Products.Queries.RequestModels;
 using Application.Interfaces;
 using Application.Specifications;
+using AutoMapper;
 using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -16,10 +17,12 @@ namespace Application.Features.Products.Queries.Handlers
     public class GetProductsHandler : IRequestHandler<GetProductsQuery, IReadOnlyList<ProductDto>>
     {
         private readonly IGenericRepository<Product> _genericRepository;
+        private readonly IMapper _mapper;
 
-        public GetProductsHandler(IGenericRepository<Product> genericRepository)
+        public GetProductsHandler(IGenericRepository<Product> genericRepository, IMapper mapper)
         {
             _genericRepository = genericRepository;
+            _mapper = mapper;
         }
 
         public async Task<IReadOnlyList<ProductDto>> Handle(GetProductsQuery request, CancellationToken cancellationToken)
@@ -28,16 +31,7 @@ namespace Application.Features.Products.Queries.Handlers
             
             var products = await _genericRepository.ListAsync(spec);
 
-            return products.Select(product => new ProductDto
-            {
-                Id = product.Id,
-                Name = product.Name,
-                Description = product.Description,
-                PictureUrl = product.PictureUrl,
-                Price = product.Price,
-                ProductBrand = product.ProductBrand.Name,
-                ProductType = product.ProductType.Name
-            }).ToList();
+            return _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductDto>>(products);
         }
     }
 }

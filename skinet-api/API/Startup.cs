@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Application.Features.Products.Queries.RequestModels;
+using Application.Helpers;
 using Application.Interfaces;
 using Infrastracture.Data;
 using MediatR;
@@ -33,9 +34,9 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(MappingProfiles));
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            
             services.AddControllers();
             services.AddMediatR(typeof(GetProductsQuery).Assembly);
             services.AddDbContext<DataContext>(x => 
