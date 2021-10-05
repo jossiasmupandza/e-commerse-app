@@ -13,10 +13,14 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controllers" t="Include">
           <e p="BaseController.cs" t="Include" />
+          <e p="BuggyController.cs" t="Include" />
           <e p="ProductsController.cs" t="Include" />
           <e p="WeatherForecastController.cs" t="Include" />
         </e>
         <e p="db.sql" t="Include" />
+        <e p="Errors" t="Include">
+          <e p="ApiResponse.cs" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="net5.0" t="Include">
