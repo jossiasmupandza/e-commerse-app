@@ -20,7 +20,11 @@
         </e>
         <e p="db.sql" t="Include" />
         <e p="Errors" t="Include">
+          <e p="ApiException.cs" t="Include" />
           <e p="ApiResponse.cs" t="Include" />
+        </e>
+        <e p="Middlewares" t="Include">
+          <e p="ExceptionMiddleware.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
