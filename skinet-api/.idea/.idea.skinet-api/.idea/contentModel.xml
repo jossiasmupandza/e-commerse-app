@@ -14,6 +14,7 @@
         <e p="Controllers" t="Include">
           <e p="BaseController.cs" t="Include" />
           <e p="BuggyController.cs" t="Include" />
+          <e p="ErrorsController.cs" t="Include" />
           <e p="ProductsController.cs" t="Include" />
           <e p="WeatherForecastController.cs" t="Include" />
         </e>
