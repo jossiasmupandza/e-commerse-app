@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace API.Errors
+﻿namespace Application.Errors
 {
     public class ApiResponse
     {

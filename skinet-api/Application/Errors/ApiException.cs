@@ -1,4 +1,4 @@
-﻿namespace API.Errors
+﻿namespace Application.Errors
 {
     public class ApiException : ApiResponse
     {
