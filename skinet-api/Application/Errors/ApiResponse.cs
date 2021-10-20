@@ -1,26 +1,31 @@
-﻿namespace Application.Errors
-{
-    public class ApiResponse
-    {
-        public int StatusCode { get; set; }
-        public string Message { get; set; }
+﻿using System;
+using System.Net;
 
-        public ApiResponse(int statusCode, string message = null)
+namespace Application.Errors
+{
+    public class ApiResponse 
+    {
+        public HttpStatusCode StatusCode { get; set; }
+        public string ErrorMessage { get; set; }
+
+        public ApiResponse(HttpStatusCode statusCode, string message = null)
         {
             StatusCode = statusCode;
-            Message = message ?? GetDefaultErrorMessage(statusCode);
+            ErrorMessage = message ?? GetDefaultErrorMessage(statusCode);
         }
 
-        private string GetDefaultErrorMessage(int statusCode)
+        private string GetDefaultErrorMessage(HttpStatusCode statusCode)
         {
             return StatusCode switch
             {
-                400 => "A bad request you have made",
-                401 => "You are not authorized",
-                404 => "Resource not found",
-                500 =>
-                    "Errors are the path to dark side. errors lead to anger. anger leads to hate. hate leads to change your work",
-                _ => "Internal error"
+                HttpStatusCode.Forbidden => "Access denied",
+                HttpStatusCode.BadRequest => "A bad request",
+                HttpStatusCode.Unauthorized => "You are not authorized",
+                HttpStatusCode.NotFound => "Resource not found",
+                HttpStatusCode.Conflict => "Conflicts of data",
+                HttpStatusCode.MethodNotAllowed => "Method not allowed",
+                HttpStatusCode.InternalServerError => "Internal server error",
+                _ => "Errors are the path to dark side. errors lead to anger. anger leads to hate. hate leads to change your work",
             };
         }
     }

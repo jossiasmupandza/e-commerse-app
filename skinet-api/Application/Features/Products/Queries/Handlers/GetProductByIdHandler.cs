@@ -1,6 +1,9 @@
-﻿using System.Threading;
+﻿using System;
+using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 using Application.Dtos;
+using Application.Errors;
 using Application.Features.Products.Queries.RequestModels;
 using Application.Interfaces;
 using Application.Specifications;
@@ -27,6 +30,10 @@ namespace Application.Features.Products.Queries.Handlers
             var spec = new ProductWithTypesAndBrandsSpecification(request.Id);
 
             var product = await _genericRepository.GetEntityWithSpecification(spec);
+
+            if (product == null)
+                throw  new WebException( $"Product with id {request.Id} not found", (WebExceptionStatus) HttpStatusCode.NotFound);
+            
             return _mapper.Map<Product, ProductDto>(product);
         }
     }

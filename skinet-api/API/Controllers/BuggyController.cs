@@ -1,4 +1,5 @@
-﻿using Application.Errors;
+﻿using System.Net;
+using Application.Errors;
 using Microsoft.AspNetCore.Mvc;
 using Persistence;
 
@@ -20,7 +21,7 @@ namespace API.Controllers
 
             if (thing == null)
             {
-                return NotFound(new ApiResponse(404));
+                return NotFound(new ApiResponse(HttpStatusCode.NotFound));
             }
             
             return Ok();
@@ -39,7 +40,8 @@ namespace API.Controllers
         [HttpGet("badRequest")]
         public ActionResult BadRequests()
         {
-            return BadRequest(new ApiResponse(400));
+            //return BadRequest(new ApiResponse(HttpStatusCode.BadRequest));
+            throw new WebException(null,(WebExceptionStatus) 404);
         }
         
         [HttpGet("badRequest/{id}")]

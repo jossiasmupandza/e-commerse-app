@@ -24,9 +24,25 @@ namespace API.Middlewares
 
         public async Task InvokeAsync(HttpContext context)
         {
+
             try
             {
                 await _next(context);
+            }
+            catch (WebException ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                context.Response.ContentType = "application/json";
+                context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
+
+                var response = _env.IsDevelopment()
+                    ? new ApiException((HttpStatusCode) ex.Status, ex.Message, ex.StackTrace.ToString())
+                    : new ApiException((HttpStatusCode) ex.Status);
+                
+                var jsonOptions = new JsonSerializerOptions{PropertyNamingPolicy = JsonNamingPolicy.CamelCase};
+                var json = JsonSerializer.Serialize(response, jsonOptions);
+
+                await context.Response.WriteAsync(json);
             }
             catch (Exception ex)
             {
@@ -35,8 +51,8 @@ namespace API.Middlewares
                 context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
 
                 var response = _env.IsDevelopment()
-                    ? new ApiException((int) HttpStatusCode.InternalServerError, ex.Message, ex.StackTrace.ToString())
-                    : new ApiException((int) HttpStatusCode.InternalServerError);
+                    ? new ApiException(HttpStatusCode.InternalServerError, ex.Message, ex.StackTrace.ToString())
+                    : new ApiException(HttpStatusCode.InternalServerError);
                 
                 var jsonOptions = new JsonSerializerOptions{PropertyNamingPolicy = JsonNamingPolicy.CamelCase};
                 var json = JsonSerializer.Serialize(response, jsonOptions);

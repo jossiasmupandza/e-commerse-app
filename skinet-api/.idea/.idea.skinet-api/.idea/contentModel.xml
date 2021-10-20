@@ -19,6 +19,7 @@
           <e p="WeatherForecastController.cs" t="Include" />
         </e>
         <e p="db.sql" t="Include" />
+        <e p="Extensions" t="Include" />
         <e p="Middlewares" t="Include">
           <e p="ExceptionMiddleware.cs" t="Include" />
         </e>
