@@ -27,7 +27,7 @@ namespace Application.Features.Products.Queries.Handlers
 
         public async Task<IReadOnlyList<ProductDto>> Handle(GetProductsQuery request, CancellationToken cancellationToken)
         {
-            var spec = new ProductWithTypesAndBrandsSpecification();
+            var spec = new ProductWithTypesAndBrandsSpecification(request.Sort);
             
             var products = await _genericRepository.ListAsync(spec);
 

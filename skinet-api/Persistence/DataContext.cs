@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Reflection;
 using Domain;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,23 @@ namespace Persistence
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            if (Database.ProviderName == "Microsoft.EntityFrameworkCore.Sqlite")
+            {
+                foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+                {
+                    var proprieties = entityType.ClrType.
+                        GetProperties()
+                        .Where(p => p.PropertyType == typeof(decimal));
+
+                    foreach (var propriety in proprieties)
+                    {
+                        modelBuilder.Entity(entityType.Name)
+                            .Property(propriety.Name)
+                            .HasConversion<double>();
+                    }
+                }
+            }
         }
     }
 }

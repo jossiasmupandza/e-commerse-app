@@ -7,6 +7,6 @@ namespace Application.Features.Products.Queries.RequestModels
 {
     public class GetProductsQuery : IRequest<IReadOnlyList<ProductDto>>
     {
-        
+        public string Sort { get; set; }
     }
 }
