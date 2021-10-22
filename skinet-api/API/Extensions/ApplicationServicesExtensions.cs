@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Application.Dtos;
 using Application.Errors;
 using Application.Interfaces;
 using Infrastracture.Data;
@@ -24,7 +25,7 @@ namespace API.Extensions
                         .Select(x => x.ErrorMessage)
                         .ToArray();
 
-                    var errorResponse = new ApiValidationErrorResponse
+                    var errorResponse = new ApiValidationErrorResponseDto
                     {
                         Errors = errors
                     };

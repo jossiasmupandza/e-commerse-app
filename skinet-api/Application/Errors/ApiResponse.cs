@@ -3,7 +3,7 @@ using System.Net;
 
 namespace Application.Errors
 {
-    public class ApiResponse 
+    public class ApiResponse : Exception
     {
         public HttpStatusCode StatusCode { get; set; }
         public string ErrorMessage { get; set; }

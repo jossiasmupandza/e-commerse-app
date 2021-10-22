@@ -21,7 +21,7 @@ namespace API.Controllers
 
             if (thing == null)
             {
-                return NotFound(new ApiResponse(HttpStatusCode.NotFound));
+                throw new ApiException(HttpStatusCode.NotFound);
             }
             
             return Ok();
@@ -41,7 +41,7 @@ namespace API.Controllers
         public ActionResult BadRequests()
         {
             //return BadRequest(new ApiResponse(HttpStatusCode.BadRequest));
-            throw new WebException(null,(WebExceptionStatus) 404);
+            throw new ApiException(HttpStatusCode.BadRequest, "bad request");
         }
         
         [HttpGet("badRequest/{id}")]

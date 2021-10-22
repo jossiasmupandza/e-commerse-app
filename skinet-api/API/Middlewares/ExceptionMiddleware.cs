@@ -2,6 +2,7 @@
 using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Application.Dtos;
 using Application.Errors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
@@ -29,15 +30,15 @@ namespace API.Middlewares
             {
                 await _next(context);
             }
-            catch (WebException ex)
+            catch (ApiException ex)
             {
-                _logger.LogError(ex, ex.Message);
+                _logger.LogError(ex, ex.ErrorMessage);
                 context.Response.ContentType = "application/json";
-                context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
+                context.Response.StatusCode = (int) ex.StatusCode;
 
                 var response = _env.IsDevelopment()
-                    ? new ApiException((HttpStatusCode) ex.Status, ex.Message, ex.StackTrace.ToString())
-                    : new ApiException((HttpStatusCode) ex.Status);
+                    ? new ApiExceptionDto{StatusCode = ex.StatusCode, ErrorMessage = ex.ErrorMessage, Details = ex.StackTrace}
+                    : new ApiExceptionDto{StatusCode = ex.StatusCode, ErrorMessage = ex.ErrorMessage};
                 
                 var jsonOptions = new JsonSerializerOptions{PropertyNamingPolicy = JsonNamingPolicy.CamelCase};
                 var json = JsonSerializer.Serialize(response, jsonOptions);
@@ -51,8 +52,8 @@ namespace API.Middlewares
                 context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
 
                 var response = _env.IsDevelopment()
-                    ? new ApiException(HttpStatusCode.InternalServerError, ex.Message, ex.StackTrace.ToString())
-                    : new ApiException(HttpStatusCode.InternalServerError);
+                    ? new ApiExceptionDto{StatusCode = HttpStatusCode.InternalServerError, ErrorMessage = ex.Message, Details = ex.StackTrace}
+                    : new ApiExceptionDto{StatusCode = HttpStatusCode.InternalServerError, ErrorMessage = ex.Message};
                 
                 var jsonOptions = new JsonSerializerOptions{PropertyNamingPolicy = JsonNamingPolicy.CamelCase};
                 var json = JsonSerializer.Serialize(response, jsonOptions);
