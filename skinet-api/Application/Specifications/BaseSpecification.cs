@@ -41,7 +41,7 @@ namespace Application.Specifications
             OrderByDescending = orderByDescendingExpression;
         }
 
-        protected void AddPagination(int take, int skip)
+        protected void ApplyPaging(int skip, int take)
         {
             Take = take;
             Skip = skip;

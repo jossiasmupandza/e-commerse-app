@@ -6,18 +6,20 @@ namespace Application.Specifications
 {
     public class ProductWithTypesAndBrandsSpecification : BaseSpecification<Product>
     {
-        public ProductWithTypesAndBrandsSpecification(string sort, int? brandId, int? typeId) :
+        public ProductWithTypesAndBrandsSpecification(SpecParams specParams) :
             base(x => 
-                (!brandId.HasValue || x.ProductBrandId == brandId) && (!typeId.HasValue || x.ProductTypeId == typeId)
+                (!specParams.BrandId.HasValue || x.ProductBrandId == specParams.BrandId) 
+                && (!specParams.TypeId.HasValue || x.ProductTypeId == specParams.TypeId)
             )
         {
             AddInclude(x => x.ProductBrand);
             AddInclude(x => x.ProductType);
             AddOrderBy(x => x.Name);
+            ApplyPaging( specParams.PageSize * (specParams.PageIndex -1),specParams.PageSize);
 
-            if (sort != null)
+            if (specParams.Sort != null)
             {
-                switch (sort)
+                switch (specParams.Sort)
                 {
                     case "nameDesc":
                         AddOrderByDescending(x => x.Name);

@@ -141,6 +141,7 @@
         <e p="Specifications" t="Include">
           <e p="BaseSpecification.cs" t="Include" />
           <e p="ProductWithTypesAndBrandsSpecification.cs" t="Include" />
+          <e p="SpecParams.cs" t="Include" />
         </e>
       </e>
       <e p="Domain" t="IncludeRecursive">
