@@ -35,7 +35,7 @@ namespace Application.Specifications
         
         protected void AddOrderByDescending(Expression<Func<T, object>> orderByDescendingExpression)
         {
-            OrderByDescending = OrderByDescending;
+            OrderByDescending = orderByDescendingExpression;
         } 
     }
 }

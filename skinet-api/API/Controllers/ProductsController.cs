@@ -12,9 +12,10 @@ namespace API.Controllers
     public class ProductsController : BaseController
     {
         [HttpGet]
-        public async Task<IReadOnlyList<ProductDto>> GetProducts([FromQuery(Name = "sort")] string sort)
+        public async Task<IReadOnlyList<ProductDto>> GetProducts([FromQuery(Name = "sort")] string sort, 
+            int? brandId, int? typeId)
         {
-            return await Mediator.Send(new GetProductsQuery{Sort = sort});
+            return await Mediator.Send(new GetProductsQuery{Sort = sort, BrandId = brandId, TypeId = typeId});
         }
 
         [HttpGet("{id}")]
