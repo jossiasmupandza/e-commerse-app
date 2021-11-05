@@ -19,8 +19,6 @@
           <e p="WeatherForecastController.cs" t="Include" />
         </e>
         <e p="db.sql" t="Include" />
-        <e p="db.sql-shm" t="Include" />
-        <e p="db.sql-wal" t="Include" />
         <e p="Extensions" t="Include">
           <e p="ApplicationServicesExtensions.cs" t="Include" />
           <e p="SwaggerServiceExtensions.cs" t="Include" />
@@ -121,6 +119,7 @@
         </e>
         <e p="Helpers" t="Include">
           <e p="MappingProfiles.cs" t="Include" />
+          <e p="Pagination.cs" t="Include" />
           <e p="ProductUrlResolver.cs" t="Include" />
         </e>
         <e p="Interfaces" t="Include">
@@ -140,6 +139,7 @@
         </e>
         <e p="Specifications" t="Include">
           <e p="BaseSpecification.cs" t="Include" />
+          <e p="ProductWithFiltersForCountSpecification.cs" t="Include" />
           <e p="ProductWithTypesAndBrandsSpecification.cs" t="Include" />
           <e p="SpecParams.cs" t="Include" />
         </e>

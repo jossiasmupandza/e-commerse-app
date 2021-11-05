@@ -4,6 +4,7 @@ using Application.Dtos;
 using Application.Features.ProductBrands.Queries.RequestModal;
 using Application.Features.Products.Queries.RequestModels;
 using Application.Features.ProductTypes.Queries.RequestModals;
+using Application.Helpers;
 using Application.Specifications;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +14,7 @@ namespace API.Controllers
     public class ProductsController : BaseController
     {
         [HttpGet]
-        public async Task<IReadOnlyList<ProductDto>> GetProducts([FromQuery] SpecParams specParams)
+        public async Task<Pagination<ProductDto>> GetProducts([FromQuery] SpecParams specParams)
         {
             return await Mediator.Send(new GetProductsQuery{SpecParams = specParams});
         }
