@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ShopService} from "./shop.service";
 import {IProduct} from "../shared/models/product";
 import {IProductBrand} from "../shared/models/productBrand";
@@ -11,6 +11,9 @@ import {ShopParams} from "../shared/models/ShopParams";
   styleUrls: ['./shop.component.css']
 })
 export class ShopComponent implements OnInit {
+  // we use static = true when how referenced element does not have a condition to show on screen
+  // viewChild to access elements on our template
+  @ViewChild('search', {static: true}) searchTerm: ElementRef;
   products: IProduct[];
   productBrands: IProductBrand[];
   productTypes: IProductType[];
@@ -77,5 +80,16 @@ export class ShopComponent implements OnInit {
   onPageChanged(page: number) {
     this.shopParams.pageNumber = page;
     this.getProducts()
+  }
+
+  onSearch() {
+    this.shopParams.search = this.searchTerm.nativeElement.value;
+    this.getProducts();
+  }
+
+  onReset() {
+    this.searchTerm.nativeElement.value = '';
+    this.shopParams = new ShopParams();
+    this.getProducts();
   }
 }
