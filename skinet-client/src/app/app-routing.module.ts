@@ -8,7 +8,7 @@ import {ServerErrorComponent} from "./core/server-error/server-error.component";
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'test-error', component: TestErrorComponent},
-  {path: 'notfound', component: NotFoundComponent},
+  {path: 'not-found', component: NotFoundComponent},
   {path: 'server-error', component: ServerErrorComponent},
   {path: 'shop', loadChildren: () => import('./shop/shop.module').then(mod => mod.ShopModule)}, //layzy loading - the module will only be loaded when the link is activated
   {path: '**', redirectTo:'', pathMatch: 'full'},
