@@ -32,8 +32,8 @@ namespace Application.Features.Products.Queries.Handlers
             var product = await _genericRepository.GetEntityWithSpecification(spec);
 
             if (product == null)
-                throw  new WebException( $"Product with id {request.Id} not found", (WebExceptionStatus) HttpStatusCode.NotFound);
-            
+                throw new ApiException(HttpStatusCode.NotFound, $"Product with id {request.Id} not found");
+
             return _mapper.Map<Product, ProductDto>(product);
         }
     }
