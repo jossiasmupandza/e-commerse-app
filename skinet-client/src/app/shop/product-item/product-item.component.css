@@ -1,7 +1,38 @@
-.btn-group{
-  width: 100%;
+.btn {
+  width: 30%;
+  height: 40px;
 }
 
-.btn {
-  width: 50%;
+.image :hover {
+  opacity: 1;
 }
+
+.image button:hover {
+  transform: none;
+  opacity: 1;
+}
+
+.hover-overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(255,255,255, 0.5);
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.hover-overlay:hover button {
+  z-index: 1000;
+  transition: all 0.5s;
+}
+
+.hover-overlay:hover button:first-of-type {
+  transform: translateX(-20px);
+}
+
+.hover-overlay:hover button:last-of-type {
+  transform: translateX(20px);
+}
+
