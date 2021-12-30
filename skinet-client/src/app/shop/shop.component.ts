@@ -13,7 +13,7 @@ import {ShopParams} from "../shared/models/ShopParams";
 export class ShopComponent implements OnInit {
   // we use static = true when how referenced element does not have a condition to show on screen
   // viewChild to access elements on our template
-  @ViewChild('search', {static: true}) searchTerm: ElementRef;
+  @ViewChild('search', {static: false}) searchTerm: ElementRef;
   products: IProduct[];
   productBrands: IProductBrand[];
   productTypes: IProductType[];
