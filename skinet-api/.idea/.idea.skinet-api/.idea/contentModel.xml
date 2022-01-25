@@ -11,6 +11,7 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controllers" t="Include">
           <e p="BaseController.cs" t="Include" />
+          <e p="BasketController.cs" t="Include" />
           <e p="BuggyController.cs" t="Include" />
           <e p="ErrorsController.cs" t="Include" />
           <e p="ProductsController.cs" t="Include" />
@@ -77,6 +78,26 @@
           <e p="ApiValidationErrorResponse.cs" t="Include" />
         </e>
         <e p="Features" t="Include">
+          <e p="Baskets" t="Include">
+            <e p="Commands" t="Include">
+              <e p="Handlers" t="Include">
+                <e p="DeleteBasketHandler.cs" t="Include" />
+                <e p="UpdateBasketHandler.cs" t="Include" />
+              </e>
+              <e p="RequestModals" t="Include">
+                <e p="DeleteBasketQuery.cs" t="Include" />
+                <e p="UpdateBasketQuery.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Queries" t="Include">
+              <e p="Handlers" t="Include">
+                <e p="GetBasketByIdHandler.cs" t="Include" />
+              </e>
+              <e p="RequestModals" t="Include">
+                <e p="GetBasketByIDQuery.cs" t="Include" />
+              </e>
+            </e>
+          </e>
           <e p="ProductBrands" t="Include">
             <e p="Queries" t="Include">
               <e p="Handlers" t="Include">
