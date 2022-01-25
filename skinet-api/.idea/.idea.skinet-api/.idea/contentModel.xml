@@ -121,6 +121,7 @@
           <e p="ProductUrlResolver.cs" t="Include" />
         </e>
         <e p="Interfaces" t="Include">
+          <e p="IBasketRepository.cs" t="Include" />
           <e p="IGenericRepository.cs" t="Include" />
           <e p="IProductRepository.cs" t="Include" />
           <e p="ISpecification.cs" t="Include" />
@@ -163,6 +164,7 @@
       <e p="Infrastracture" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Data" t="Include">
+          <e p="BasketRepository.cs" t="Include" />
           <e p="GenericRepository.cs" t="Include" />
           <e p="SpecificationEvaluator.cs" t="Include" />
           <e p="UnitOfWork.cs" t="Include" />
