@@ -9,9 +9,9 @@ namespace API.Controllers
     public class BasketController : BaseController
     {
         [HttpGet]
-        public async Task<ActionResult<CustomerBasket>> GetBasketById(string basketId)
+        public async Task<ActionResult<CustomerBasket>> GetBasketById(string id)
         {
-            return await Mediator.Send(new GetBasketByIdQuery {BasketId = basketId});
+            return await Mediator.Send(new GetBasketByIdQuery {BasketId = id});
         }
 
         [HttpPost]
@@ -21,9 +21,9 @@ namespace API.Controllers
         }
 
         [HttpDelete]
-        public async Task<ActionResult<bool>> DeleteBasket(string basketId)
+        public async Task<ActionResult<bool>> DeleteBasket(string id)
         {
-            return await Mediator.Send(new DeleteBasketQuery {BasketId = basketId});
+            return await Mediator.Send(new DeleteBasketQuery {BasketId = id});
         }
     }
 }
