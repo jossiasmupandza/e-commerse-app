@@ -11,19 +11,19 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<CustomerBasket>> GetBasketById(string id)
         {
-            return await Mediator.Send(new GetBasketByIdQuery {BasketId = id});
+            return await Mediator.Send(new GetBasketByIdQuery { BasketId = id });
         }
 
         [HttpPost]
         public async Task<ActionResult<CustomerBasket>> UpdateBasket(CustomerBasket basket)
         {
-            return await Mediator.Send(new UpdateBasketQuery {CustomerBasket = basket});
+            return await Mediator.Send(new UpdateBasketQuery { CustomerBasket = basket });
         }
 
         [HttpDelete]
         public async Task<ActionResult<bool>> DeleteBasket(string id)
         {
-            return await Mediator.Send(new DeleteBasketQuery {BasketId = id});
+            return await Mediator.Send(new DeleteBasketQuery { BasketId = id });
         }
     }
 }
