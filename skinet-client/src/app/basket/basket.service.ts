@@ -20,9 +20,9 @@ export class BasketService {
   getBasket(id: string) {
     return this.httpClient.get(this.baseUrl + 'basket?id=' + id)
       .pipe(
-        map((basket: IBasket) =>
+        map((basket: IBasket) => {
           this.basketSource.next(basket)
-        )
+        })
       )
   }
 
