@@ -50,6 +50,46 @@ export class BasketService {
     this.setBasket(basket);
   }
 
+  incrementItemQuantity(item: IBasketItem) {
+    const basket = this.getCurrentValue();
+    const foundIndex = basket.items.findIndex(x => x.id === item.id);
+    basket.items[foundIndex].quantity++;
+    this.setBasket(basket);
+  }
+
+  decrementItemQuantity(item: IBasketItem){
+    const basket = this.getCurrentValue();
+    const foundIndex = basket.items.findIndex(x => x.id === item.id);
+    if(basket.items[foundIndex].quantity > 1) {
+      basket.items[foundIndex].quantity--;
+      this.setBasket(basket);
+    } {
+      this.removeItemFromBasket(item);
+    }
+  }
+
+  removeItemFromBasket(item: IBasketItem) {
+    const basket = this.getCurrentValue();
+    if(basket.items.some(x => x.id === item.id)) {
+      basket.items = basket.items.filter(x => x.id !== item.id);
+      if(basket.items.length > 0) {
+        this.setBasket(basket);
+      } else {
+        this.deleteBasket(basket);
+      }
+    }
+  }
+
+  deleteBasket(basket: IBasket) {
+    return this.httpClient.delete(this.baseUrl + "basket?ID=" + basket.id).subscribe(()=> {
+      this.basketSource.next(null);
+      this.basketTotalsSource.next(null);
+      localStorage.removeItem("basket_id")
+    }, error => {
+      console.log(error);
+    })
+  }
+
   private mapProductToBasketItem(product: IProduct, quantity: number): IBasketItem {
     return {
       id: product.id,
