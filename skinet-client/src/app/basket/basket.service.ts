@@ -63,7 +63,7 @@ export class BasketService {
     if(basket.items[foundIndex].quantity > 1) {
       basket.items[foundIndex].quantity--;
       this.setBasket(basket);
-    } {
+    } else {
       this.removeItemFromBasket(item);
     }
   }

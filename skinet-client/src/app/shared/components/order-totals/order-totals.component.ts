@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
-import {IBasketTotals} from "../../models/basket";
+import {IBasketItem, IBasketTotals} from "../../models/basket";
 import {BasketService} from "../../../basket/basket.service";
 
 @Component({
@@ -16,5 +16,4 @@ export class OrderTotalsComponent implements OnInit {
   ngOnInit(): void {
     this.basketTotals$ = this.basketService.basketTotals$;
   }
-
 }
