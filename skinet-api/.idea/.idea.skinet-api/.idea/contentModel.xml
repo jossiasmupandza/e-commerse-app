@@ -203,6 +203,7 @@
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="Persistence" t="IncludeRecursive">
+        <e p="AppIdentityDbContext.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Config" t="Include">
           <e p="ProductConfiguration.cs" t="Include" />
