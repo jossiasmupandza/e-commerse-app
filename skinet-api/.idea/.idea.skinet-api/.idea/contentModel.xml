@@ -166,6 +166,8 @@
         </e>
       </e>
       <e p="Domain" t="IncludeRecursive">
+        <e p="Address.cs" t="Include" />
+        <e p="AppUser.cs" t="Include" />
         <e p="BaseEntity.cs" t="Include" />
         <e p="BasketItem.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
