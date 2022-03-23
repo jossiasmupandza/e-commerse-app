@@ -210,6 +210,14 @@
         </e>
         <e p="DataContext.cs" t="Include" />
         <e p="DataContextSeed.cs" t="Include" />
+        <e p="Identity" t="Include">
+          <e p="AppIdentityDbContextSeed.cs" t="Include" />
+          <e p="Migrations" t="Include">
+            <e p="20220323130208_IdentityInitial.cs" t="Include" />
+            <e p="20220323130208_IdentityInitial.Designer.cs" t="Include" />
+            <e p="AppIdentityDbContextModelSnapshot.cs" t="Include" />
+          </e>
+        </e>
         <e p="Migrations" t="Include">
           <e p="20210922135349_InitialCreate.cs" t="Include" />
           <e p="20210922135349_InitialCreate.Designer.cs" t="Include" />
