@@ -1,0 +1,4 @@
+
+*.sql-shm
+skinet-api/API/identity.sql-wal
+skinet-api/API/identity.sql-shm
