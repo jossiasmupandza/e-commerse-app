@@ -10,6 +10,7 @@
         <e p="appsettings.json" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controllers" t="Include">
+          <e p="AccountController.cs" t="Include" />
           <e p="BaseController.cs" t="Include" />
           <e p="BasketController.cs" t="Include" />
           <e p="BuggyController.cs" t="Include" />
@@ -75,6 +76,7 @@
           <e p="ApiResponseDto.cs" t="Include" />
           <e p="ApiValidationErrorResponseDto.cs" t="Include" />
           <e p="ProductDto.cs" t="Include" />
+          <e p="UserDto.cs" t="Include" />
         </e>
         <e p="Errors" t="Include">
           <e p="ApiException.cs" t="Include" />
@@ -82,6 +84,16 @@
           <e p="ApiValidationErrorResponse.cs" t="Include" />
         </e>
         <e p="Features" t="Include">
+          <e p="Account" t="Include">
+            <e p="Commands" t="Include">
+              <e p="Handlers" t="Include">
+                <e p="LoginHandler.cs" t="Include" />
+              </e>
+              <e p="RequestModals" t="Include">
+                <e p="LoginCommand.cs" t="Include" />
+              </e>
+            </e>
+          </e>
           <e p="Baskets" t="Include">
             <e p="Commands" t="Include">
               <e p="Handlers" t="Include">
