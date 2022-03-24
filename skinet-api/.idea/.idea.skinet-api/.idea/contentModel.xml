@@ -23,6 +23,9 @@
           <e p="IdentityServiceExtensions.cs" t="Include" />
           <e p="SwaggerServiceExtensions.cs" t="Include" />
         </e>
+        <e p="identity.sql" t="Include" />
+        <e p="identity.sql-shm" t="Include" />
+        <e p="identity.sql-wal" t="Include" />
         <e p="Middlewares" t="Include">
           <e p="ExceptionMiddleware.cs" t="Include" />
         </e>
@@ -204,7 +207,6 @@
       </e>
       <e p="packages" t="ExcludeRecursive" />
       <e p="Persistence" t="IncludeRecursive">
-        <e p="AppIdentityDbContext.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Config" t="Include">
           <e p="ProductConfiguration.cs" t="Include" />
@@ -212,6 +214,7 @@
         <e p="DataContext.cs" t="Include" />
         <e p="DataContextSeed.cs" t="Include" />
         <e p="Identity" t="Include">
+          <e p="AppIdentityDbContext.cs" t="Include" />
           <e p="AppIdentityDbContextSeed.cs" t="Include" />
           <e p="Migrations" t="Include">
             <e p="20220323130208_IdentityInitial.cs" t="Include" />
