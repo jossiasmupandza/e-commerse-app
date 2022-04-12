@@ -25,8 +25,6 @@
           <e p="SwaggerServiceExtensions.cs" t="Include" />
         </e>
         <e p="identity.sql" t="Include" />
-        <e p="identity.sql-shm" t="Include" />
-        <e p="identity.sql-wal" t="Include" />
         <e p="Middlewares" t="Include">
           <e p="ExceptionMiddleware.cs" t="Include" />
         </e>
@@ -88,9 +86,11 @@
             <e p="Commands" t="Include">
               <e p="Handlers" t="Include">
                 <e p="LoginHandler.cs" t="Include" />
+                <e p="RegisterHandler.cs" t="Include" />
               </e>
               <e p="RequestModals" t="Include">
                 <e p="LoginCommand.cs" t="Include" />
+                <e p="RegisterCommand.cs" t="Include" />
               </e>
             </e>
           </e>

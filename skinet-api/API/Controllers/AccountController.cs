@@ -12,5 +12,11 @@ namespace API.Controllers
         {
             return await Mediator.Send(command);
         }
+
+        [HttpPost("register")]
+        public async Task<ActionResult<UserDto>> Register(RegisterCommand command)
+        {
+            return await Mediator.Send(command);
+        }
     }
 }
