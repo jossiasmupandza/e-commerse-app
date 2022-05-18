@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Application.Dtos;
 using Application.Errors;
 using Application.Features.Account.Commands.RequestModals;
+using Application.Interfaces;
 using Domain;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
@@ -13,10 +14,12 @@ namespace Application.Features.Account.Commands.Handlers
     public class RegisterHandler : IRequestHandler<RegisterCommand, UserDto>
     {
         private readonly UserManager<AppUser> _userManager;
+        private readonly ITokenService _tokenService;
 
-        public RegisterHandler(UserManager<AppUser> userManager)
+        public RegisterHandler(UserManager<AppUser> userManager, ITokenService tokenService)
         {
             _userManager = userManager;
+            _tokenService = tokenService;
         }
 
         public async Task<UserDto> Handle(RegisterCommand request, CancellationToken cancellationToken)
@@ -39,7 +42,7 @@ namespace Application.Features.Account.Commands.Handlers
             {
                 DisplayName = user.DisplayName,
                 Email = user.Email,
-                Token = "This will be a token"
+                Token = _tokenService.CreateToken(user)
             };
         }
     }

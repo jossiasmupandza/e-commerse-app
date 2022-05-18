@@ -11,7 +11,7 @@ namespace API.Controllers
     {
         public IActionResult Error(HttpStatusCode code)
         {
-            return new ObjectResult(new ApiResponseDto{StatusCode = code, ErrorMessage = "Route not found"});
+            throw new ApiException(code);
         }
     }
 }

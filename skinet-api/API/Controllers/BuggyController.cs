@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using Application.Errors;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Persistence;
 
@@ -48,6 +49,13 @@ namespace API.Controllers
         public ActionResult BadRequests(int id)
         {
             return Ok();
+        }
+        
+        [Authorize] 
+        [HttpGet("testauth")]
+        public string GetSecret()
+        {
+            return "Secret message for auth users";
         }
     }
 }
