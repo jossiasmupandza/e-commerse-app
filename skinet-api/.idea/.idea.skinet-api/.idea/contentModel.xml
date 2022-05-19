@@ -92,8 +92,17 @@
                 <e p="LoginCommand.cs" t="Include" />
                 <e p="RegisterCommand.cs" t="Include" />
               </e>
-              <e p="Validators" t="Include">
-                <e p="LoginValidator.cs" t="Include" />
+            </e>
+            <e p="Queries" t="Include">
+              <e p="Handlers" t="Include">
+                <e p="CheckEmailExistsAsyncHandler.cs" t="Include" />
+                <e p="GetCurrentUserHandler.cs" t="Include" />
+                <e p="GetUserAddressHandler.cs" t="Include" />
+              </e>
+              <e p="RequestModals" t="Include">
+                <e p="CheckEmailExistsAsyncQuery.cs" t="Include" />
+                <e p="GetCurrentUserQuery.cs" t="Include" />
+                <e p="GetUserAddressQuery.cs" t="Include" />
               </e>
             </e>
           </e>
