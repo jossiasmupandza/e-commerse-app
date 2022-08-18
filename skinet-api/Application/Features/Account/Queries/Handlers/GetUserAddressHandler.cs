@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Extensions;
 using Application.Features.Account.Queries.RequestModals;
 using Domain;
 using MediatR;
@@ -23,10 +24,8 @@ namespace Application.Features.Account.Queries.Handlers
 
         public async Task<Address> Handle(GetUserAddressQuery request, CancellationToken cancellationToken)
         {
-            var email = _httpContextAccessor.HttpContext.User?.Claims?
-                .FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
-
-            var user = await _userManager.FindByEmailAsync(email);
+            var user = await _userManager.
+                FindByClaimsPrincipalWithAddressAsync(_httpContextAccessor.HttpContext.User);
 
             return user.Address;
         }

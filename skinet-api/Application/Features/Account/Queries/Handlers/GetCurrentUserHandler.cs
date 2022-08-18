@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Dtos;
+using Application.Extensions;
 using Application.Features.Account.Queries.RequestModals;
 using Application.Interfaces;
 using Domain;
@@ -27,10 +28,8 @@ namespace Application.Features.Account.Queries.Handlers
 
         public async Task<UserDto> Handle(GetCurrentUserQuery request, CancellationToken cancellationToken)
         {
-            var email = _httpContextAccessor.HttpContext.User?.Claims?
-                .FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
-
-            var user = await _userManager.FindByEmailAsync(email);
+            var user = await _userManager
+                .FindByEmailFromClaimsPrincipalAsync( _httpContextAccessor.HttpContext.User);
             
             return new UserDto
             {
