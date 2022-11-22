@@ -38,9 +38,16 @@ namespace API.Controllers
 
         [Authorize]
         [HttpGet("address")]
-        public async Task<ActionResult<Address>> GetUserAddress()
+        public async Task<ActionResult<AddressDto>> GetUserAddress()
         {
             return await Mediator.Send(new GetUserAddressQuery());
+        }
+        
+        [Authorize]
+        [HttpPut("address")]
+        public async Task<ActionResult<AddressDto>> UpdateUserAddress(UpdateUserAddressCommand command)
+        {
+            return await Mediator.Send(command);
         }
     }
 }
