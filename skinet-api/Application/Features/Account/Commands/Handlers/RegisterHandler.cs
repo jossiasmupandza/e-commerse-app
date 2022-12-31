@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Application.Dtos;
 using Application.Errors;
 using Application.Features.Account.Commands.RequestModals;
+using Application.Features.Account.Queries.Handlers;
+using Application.Features.Account.Queries.RequestModals;
 using Application.Interfaces;
 using Domain;
 using MediatR;
@@ -24,6 +26,11 @@ namespace Application.Features.Account.Commands.Handlers
 
         public async Task<UserDto> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
+            if (await _userManager.FindByEmailAsync(request.Email) != null)
+            {
+                throw new ApiValidationErrorResponse{Errors = new []{"Email address is in use"}};
+            }
+            
             var user = new AppUser
             {
                 DisplayName = request.DisplayName,

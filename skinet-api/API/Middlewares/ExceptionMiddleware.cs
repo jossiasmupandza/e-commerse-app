@@ -30,6 +30,20 @@ namespace API.Middlewares
             {
                 await _next(context);
             }
+            catch (ApiValidationErrorResponse ex)
+            {
+                _logger.LogError(ex, ex.ErrorMessage);
+                context.Response.ContentType = "application/json";
+                context.Response.StatusCode = (int) ex.StatusCode;
+
+                var response = new ApiValidationErrorResponseDto
+                    { StatusCode = ex.StatusCode, ErrorMessage = ex.ErrorMessage, Errors = ex.Errors };
+
+                var jsonOptions = new JsonSerializerOptions{PropertyNamingPolicy = JsonNamingPolicy.CamelCase};
+                var json = JsonSerializer.Serialize(response, jsonOptions);
+
+                await context.Response.WriteAsync(json);
+            }
             catch (ApiException ex)
             {
                 _logger.LogError(ex, ex.ErrorMessage);
