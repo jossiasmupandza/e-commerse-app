@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Application.Dtos;
 using Application.Features.Baskets.Commands.RequestModals;
 using Application.Features.Baskets.Queries.RequestModals;
 using Domain;
@@ -15,15 +16,15 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<CustomerBasket>> UpdateBasket(CustomerBasket basket)
+        public async Task<ActionResult<CustomerBasket>> UpdateBasket(CustomerBasketDto basket)
         {
-            return await Mediator.Send(new UpdateBasketQuery { CustomerBasket = basket });
+            return await Mediator.Send(new UpdateBasketCommand { CustomerBasket = basket });
         }
 
         [HttpDelete]
         public async Task<ActionResult<bool>> DeleteBasket(string id)
         {
-            return await Mediator.Send(new DeleteBasketQuery { BasketId = id });
+            return await Mediator.Send(new DeleteBasketCommand { BasketId = id });
         }
     }
 }
