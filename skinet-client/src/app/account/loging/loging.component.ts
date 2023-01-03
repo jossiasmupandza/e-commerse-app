@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./loging.component.css']
 })
 export class LogingComponent implements OnInit {
-  loginGroup: FormGroup;
+  loginForm: FormGroup;
 
   constructor(private accountService: AccountService, private router: Router) { }
 
@@ -18,14 +18,14 @@ export class LogingComponent implements OnInit {
   }
 
   createLoginForm() {
-    this.loginGroup = new FormGroup({
-      email: new FormControl('', Validators.required),
+    this.loginForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.pattern("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")]),
       password: new FormControl('', Validators.required)
     })
   }
 
   onSubmit() {
-    this.accountService.login(this.loginGroup.value).subscribe(() => {
+    this.accountService.login(this.loginForm.value).subscribe(() => {
       this.router.navigateByUrl("/shop");
     }, error => {
       console.log(error);
