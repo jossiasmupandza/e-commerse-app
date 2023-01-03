@@ -29,7 +29,7 @@ namespace Application.Features.Account.Commands.Handlers
             var user = await _userManager.FindByEmailAsync(request.Email);
             
             if(user == null)
-                throw new ApiException(HttpStatusCode.NotAcceptable, "email/password is invalid");
+                throw new ApiException(HttpStatusCode.Unauthorized, "email/password is invalid");
 
             var result = await _signInManager
                 .CheckPasswordSignInAsync(user, request.Password, false);
