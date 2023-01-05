@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
+  errors: [];
 
   constructor(private formBuilder: FormBuilder, private accountService: AccountService, private router: Router) { }
 
@@ -29,6 +30,7 @@ export class RegisterComponent implements OnInit {
     return this.accountService.register(this.registerForm.value).subscribe(response => {
       this.router.navigateByUrl('/shop');
     }, error => {
+      this.errors =  error.errors;
       console.log(error);
     })
   }
